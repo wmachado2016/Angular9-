@@ -24,7 +24,8 @@ namespace CleanArch.Infra.Data.Mappings
             //builder.HasData(
             //    new Categoria("Eletrônicos", 1, true),
             //    new Categoria("Produtos de Beleza", 2, true),
-            //    new Categoria("Acessórios Automotivos", 3, true)
+            //    new Categoria("Acessórios Automotivos", 3, true),
+            //    new Categoria("Acessórios Eletrônicos", 3, true)
             //    );
 
             builder.HasQueryFilter(p => p.Ativo == true);

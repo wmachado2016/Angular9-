@@ -96,7 +96,7 @@ namespace CleanArch.Domain.Models
             Validacoes.ValidarSeVazio(Descricao, "O campo Descricao do produto não pode estar vazio");
             Validacoes.ValidarSeIgual(CategoriaId, Guid.Empty, "O campo CategoriaId do produto não pode estar vazio");
             Validacoes.ValidarSeMenorQue(Valor, 1, "O campo Valor do produto não pode se menor igual a 0");
-            Validacoes.ValidarSeVazio(Imagem, "O campo Imagem do produto não pode estar vazio");
+            Validacoes.ValidarSeVazio(Imagem, "O campo Imagem do produto não pode estar vazio");            
         }
     }
 }

@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Infra.IoC", "Clea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Tests", "CleanArch.Tests\CleanArch.Tests.csproj", "{71545354-4211-4636-BBCC-288DB8D9C6FC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.WebApi.Rest", "CleanArch.WebApi.Rest\CleanArch.WebApi.Rest.csproj", "{4040E1F3-7536-4D9E-A23F-7629A898FC83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArc.WebApi.Identidade", "CleanArc.WebApi.Identidade\CleanArc.WebApi.Identidade.csproj", "{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArc.WebApi.Identidade", "CleanArc.WebApi.Identidade\CleanArc.WebApi.Identidade.csproj", "{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.WebApi.Rest", "CleanArch.WebApi.Rest\CleanArch.WebApi.Rest.csproj", "{BC2515A4-3662-446B-9697-A08E4EDD6C67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +43,14 @@ Global
 		{71545354-4211-4636-BBCC-288DB8D9C6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71545354-4211-4636-BBCC-288DB8D9C6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71545354-4211-4636-BBCC-288DB8D9C6FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4040E1F3-7536-4D9E-A23F-7629A898FC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4040E1F3-7536-4D9E-A23F-7629A898FC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4040E1F3-7536-4D9E-A23F-7629A898FC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4040E1F3-7536-4D9E-A23F-7629A898FC83}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC2515A4-3662-446B-9697-A08E4EDD6C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC2515A4-3662-446B-9697-A08E4EDD6C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC2515A4-3662-446B-9697-A08E4EDD6C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC2515A4-3662-446B-9697-A08E4EDD6C67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

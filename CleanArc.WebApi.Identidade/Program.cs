@@ -1,8 +1,6 @@
 using CleanArc.WebApi.Identidade.Configuration;
 using CleanArc.WebApi.Identidade.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
