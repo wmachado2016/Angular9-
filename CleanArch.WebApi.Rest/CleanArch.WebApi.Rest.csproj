@@ -4,25 +4,30 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>4989195c-b0d5-4a7e-8829-39c3221570b0</UserSecretsId>
+    <UserSecretsId>4664d8ef-c9e5-48be-b12a-d21c2fd981fb</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
-	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
-	  <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="7.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Api.Analyzers" Version="2.2.6" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
+
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.12" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.12" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AutoMapper\" />
+    <ProjectReference Include="..\CleanArch.Application\CleanArch.Application.csproj" />
+    <ProjectReference Include="..\CleanArch.Infra.Data\CleanArch.Infra.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanArch.Infra.IoC\CleanArch.Infra.IoC.csproj" />
+    <Folder Include="Controllers\V1\" />
   </ItemGroup>
 
 </Project>

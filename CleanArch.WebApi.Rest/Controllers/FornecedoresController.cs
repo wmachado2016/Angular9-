@@ -1,31 +1,39 @@
 ﻿using AutoMapper;
 using CleanArch.Application.Intefaces;
-using CleanArch.Application.Notifications;
 using CleanArch.Domain.Intefaces;
 using CleanArch.Domain.Models;
-using CleanArch.Infra.IoC.Extensions;
+using CleanArch.WebApi.Rest.Extensions;
 using CleanArch.WebApi.Rest.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArch.WebApi.Rest.Controller.V1
+namespace CleanArch.WebApi.Rest.Controllers
 {
-    [ApiConventionType(typeof(DefaultApiConventions))]
-    [Route("api/v1/[controller]")]    
-    public class FornecedorController : MainController
+    [Authorize]
+    [ApiVersion("1.0")]
+    [Route("api/fornecedores")]
+    public class FornecedoresController : MainController
     {
         private readonly IFornecedorService _fornecedorService;
-        private readonly IUnitOfWork _uof;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public FornecedorController(IFornecedorService fornecedorService, IUnitOfWork uof, IMapper mapper, INotificador notificador, IUser user) : base(notificador, user)
+
+        public FornecedoresController(IMapper mapper,
+                                      IFornecedorService fornecedorService,
+                                      INotificador notificador,
+                                      IUser user,
+                                      IUnitOfWork unitOfWork) : base(notificador, user)
         {
-            _fornecedorService = fornecedorService;
-            _uof = uof;
             _mapper = mapper;
+            _fornecedorService = fornecedorService;
+            _unitOfWork = unitOfWork;
         }
 
+        [AllowAnonymous]
+        [HttpGet]
         public async Task<IEnumerable<FornecedorViewModel>> ObterTodos()
         {
-            return _mapper.Map<IEnumerable<FornecedorViewModel>>(await _uof.FornecedorRepository.ObterTodos());
+            return _mapper.Map<IEnumerable<FornecedorViewModel>>(await _unitOfWork.FornecedorRepository.ObterTodos());
         }
 
         [HttpGet("{id:guid}")]
@@ -82,7 +90,7 @@ namespace CleanArch.WebApi.Rest.Controller.V1
         [HttpGet("endereco/{id:guid}")]
         public async Task<EnderecoViewModel> ObterEnderecoPorId(Guid id)
         {
-            return _mapper.Map<EnderecoViewModel>(await _uof.EnderecoRepository.ObterPorId(id));
+            return _mapper.Map<EnderecoViewModel>(await _unitOfWork.EnderecoRepository.ObterPorId(id));
         }
 
         [ClaimsAuthorize("Fornecedor", "Atualizar")]
@@ -104,12 +112,12 @@ namespace CleanArch.WebApi.Rest.Controller.V1
 
         private async Task<FornecedorViewModel> ObterFornecedorProdutosEndereco(Guid id)
         {
-            return _mapper.Map<FornecedorViewModel>(await _uof.FornecedorRepository.ObterFornecedorProdutosEndereco(id));
+            return _mapper.Map<FornecedorViewModel>(await _unitOfWork.FornecedorRepository.ObterFornecedorProdutosEndereco(id));
         }
 
         private async Task<FornecedorViewModel> ObterFornecedorEndereco(Guid id)
         {
-            return _mapper.Map<FornecedorViewModel>(await _uof.FornecedorRepository.ObterFornecedorEndereco(id));
+            return _mapper.Map<FornecedorViewModel>(await _unitOfWork.FornecedorRepository.ObterFornecedorEndereco(id));
         }
-    }   
+    }
 }

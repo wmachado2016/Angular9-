@@ -1,7 +1,5 @@
-﻿using CleanArch.Infra.IoC.Extensions;
-using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Mvc;
+﻿
+using CleanArch.WebApi.Rest.Extensions;
 
 namespace CleanArch.WebApi.Rest.Configuration
 {
@@ -10,25 +8,6 @@ namespace CleanArch.WebApi.Rest.Configuration
         public static IServiceCollection AddApiConfig(this IServiceCollection services)
         {
             services.AddControllers();
-
-            services.AddApiVersioning(options =>
-            {
-                options.AssumeDefaultVersionWhenUnspecified = true;
-                options.DefaultApiVersion = new ApiVersion(1, 0);
-                options.ReportApiVersions = true;
-            });
-
-            services.AddVersionedApiExplorer(options =>
-            {
-                options.GroupNameFormat = "'v'VVV";
-                options.SubstituteApiVersionInUrl = true;
-            });
-
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.SuppressModelStateInvalidFilter = true;
-            });
-
             services.AddCors(options =>
             {
                 options.AddPolicy("Development",
@@ -43,7 +22,7 @@ namespace CleanArch.WebApi.Rest.Configuration
                     builder =>
                         builder
                             .WithMethods("GET")
-                            .WithOrigins("http://desenvolvedor.io")
+                            .WithOrigins("http://WSMSISTEMAS.io")
                             .SetIsOriginAllowedToAllowWildcardSubdomains()
                             //.WithHeaders(HeaderNames.ContentType, "x-custom-header")
                             .AllowAnyHeader());
@@ -54,7 +33,7 @@ namespace CleanArch.WebApi.Rest.Configuration
 
         public static IApplicationBuilder UseApiConfig(this IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.EnvironmentName == "Development")
             {
                 app.UseCors("Development");
                 app.UseDeveloperExceptionPage();
@@ -79,21 +58,6 @@ namespace CleanArch.WebApi.Rest.Configuration
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHealthChecks("/api/hc", new HealthCheckOptions()
-                {
-                    Predicate = _ => true,
-                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                });
-                //endpoints.MapHealthChecksUI(options =>
-                //{
-                //    options.UIPath = "/api/hc-ui";
-                //    options.ResourcesPath = "/api/hc-ui-resources";
-
-                //    options.UseRelativeApiPath = false;
-                //    options.UseRelativeResourcesPath = false;
-                //    options.UseRelativeWebhookPath = false;
-                //});
-
             });
 
             return app;

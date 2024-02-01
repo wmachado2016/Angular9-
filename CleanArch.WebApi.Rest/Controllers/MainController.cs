@@ -3,10 +3,10 @@ using CleanArch.Application.Notifications;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace CleanArch.WebApi.Rest.Controller
+namespace CleanArch.WebApi.Rest.Controllers
 {
     [ApiController]
-    public  abstract class MainController : ControllerBase
+    public abstract class MainController : ControllerBase
     {
         private readonly INotificador _notificador;
         public readonly IUser AppUser;
@@ -14,7 +14,7 @@ namespace CleanArch.WebApi.Rest.Controller
         protected Guid UsuarioId { get; set; }
         protected bool UsuarioAutenticado { get; set; }
 
-        protected MainController(INotificador notificador,
+        protected MainController(INotificador notificador, 
                                  IUser appUser)
         {
             _notificador = notificador;
@@ -52,7 +52,7 @@ namespace CleanArch.WebApi.Rest.Controller
 
         protected ActionResult CustomResponse(ModelStateDictionary modelState)
         {
-            if (!modelState.IsValid) NotificarErroModelInvalida(modelState);
+            if(!modelState.IsValid) NotificarErroModelInvalida(modelState);
             return CustomResponse();
         }
 

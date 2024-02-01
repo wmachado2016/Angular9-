@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Localization;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 
-namespace CleanArch.Infra.IoC.Configuration
+namespace CleanArch.WebApi.Rest.Configuration
 {
     public static class GlobalizationConfig
     {

@@ -1,25 +1,44 @@
+using CleanArch.Infra.Data.Context;
 using CleanArch.WebApi.Rest.Configuration;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddEndpointsApiExplorer();
+builder.Configuration
+    .SetBasePath(builder.Environment.ContentRootPath)
+    .AddJsonFile("appsettings.json", true, true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true)
+    .AddEnvironmentVariables();
+
+// ConfigureServices
+
+builder.Services.AddDbContext<MeuDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddApiConfig();
 
 builder.Services.AddSwaggerConfig();
 
+builder.Services.AddLoggingConfig(builder.Configuration);
+
+builder.Services.ResolveDependencies();
+
+
+
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-app.UseHttpsRedirection();
+// Configure
 
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseApiConfig(app.Environment);
+
+app.UseSwaggerConfig();
+
+app.UseLoggingConfiguration();
 
 app.Run();
