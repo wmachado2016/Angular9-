@@ -4,7 +4,7 @@ namespace CleanArch.WebApi.Rest.Extensions
 {
     public class ExceptionMiddleware
     {
-        private readonly RequestDelegate _next;
+        private readonly Microsoft.AspNetCore.Http.RequestDelegate _next;
 
         public ExceptionMiddleware(RequestDelegate next)
         {

@@ -12,49 +12,27 @@ namespace CleanArch.WebApi.Rest.Configuration
         {
             services.AddSwaggerGen(c =>
             {
-                c.OperationFilter<SwaggerDefaultValues>();
-
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                c.SwaggerDoc("v1", new OpenApiInfo()
                 {
-                    Description = "Insira o token JWT desta maneira: Bearer {seu token}",
-                    Name = "Authorization",
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
+                    Title = "WSM Sistemas REST API",
+                    Description = "Esta API faz parte da Aplicação de Treinamento em Asp Net Core Advanced",
+                    Contact = new OpenApiContact() { Name = "WSM Sistemas", Email = "wsmtecnologia2021@gmail.com" },
+                    License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
                 });
 
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        new string[] {}
-                    }
-                });
             });
 
             return services;
         }
 
-        public static IApplicationBuilder UseSwaggerConfig(this IApplicationBuilder app, IApiVersionDescriptionProvider provider)
+        public static IApplicationBuilder UseSwaggerConfig(this IApplicationBuilder app)
         {
-            //app.UseMiddleware<SwaggerAuthorizedMiddleware>();
             app.UseSwagger();
-            app.UseSwaggerUI(
-                options =>
-                {
-                    foreach (var description in provider.ApiVersionDescriptions)
-                    {
-                        options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
-                    }
-                });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            });
+
             return app;
         }
     }
@@ -77,10 +55,10 @@ namespace CleanArch.WebApi.Rest.Configuration
         {
             var info = new OpenApiInfo()
             {
-                Title = "API - desenvolvedor.io",
+                Title = "API - wsmsistemas.io",
                 Version = description.ApiVersion.ToString(),
-                Description = "Esta API faz parte do curso REST com ASP.NET Core WebAPI.",
-                Contact = new OpenApiContact() { Name = "Eduardo Pires", Email = "contato@desenvolvedor.io" },
+                Description = "Esta API faz parte do treinamento REST com ASP.NET Core WebAPI.",
+                Contact = new OpenApiContact() { Name = "Wsm Sistemas", Email = "contato@wsmsistemas.io" },
                 License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
             };
 
@@ -94,15 +72,15 @@ namespace CleanArch.WebApi.Rest.Configuration
     }
 
     public class SwaggerDefaultValues : IOperationFilter
-    {        
+    {
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             var apiDescription = context.ApiDescription;
 
             operation.Deprecated |= apiDescription.IsDeprecated();
-                 
+
             foreach (var responseType in context.ApiDescription.SupportedResponseTypes)
-            {                
+            {
                 var responseKey = responseType.IsDefaultResponse ? "default" : responseType.StatusCode.ToString();
                 var response = operation.Responses[responseKey];
 
@@ -142,12 +120,12 @@ namespace CleanArch.WebApi.Rest.Configuration
 
         public async Task Invoke(HttpContext context)
         {
-            //if (context.Request.Path.StartsWithSegments("/swagger")
-            //    && !context.User.Identity.IsAuthenticated)
-            //{
-            //    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-            //    return;
-            //}
+            if (context.Request.Path.StartsWithSegments("/swagger")
+                && !context.User.Identity.IsAuthenticated)
+            {
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                return;
+            }
 
             await _next.Invoke(context);
         }

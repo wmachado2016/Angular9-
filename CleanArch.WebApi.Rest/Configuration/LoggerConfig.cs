@@ -1,8 +1,4 @@
-﻿
-using CleanArch.Infra.IoC.Extensions;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace CleanArch.WebApi.Rest.Configuration
+﻿namespace CleanArch.WebApi.Rest.Configuration
 {
     public static class LoggerConfig
     {
