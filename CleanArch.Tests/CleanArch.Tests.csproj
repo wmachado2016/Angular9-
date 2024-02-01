@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
@@ -26,8 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CleanArc.Web.Blazor.UI\CleanArc.Web.Blazor.UI.csproj" />
+    <ProjectReference Include="..\CleanArc.WebApi.Identidade\CleanArc.WebApi.Identidade.csproj" />
     <ProjectReference Include="..\CleanArch.Application\CleanArch.Application.csproj" />
     <ProjectReference Include="..\CleanArch.Domain\CleanArch.Domain.csproj" />
+    <ProjectReference Include="..\CleanArch.Infra.Data\CleanArch.Infra.Data.csproj" />
+    <ProjectReference Include="..\CleanArch.WebApi.Rest\CleanArch.WebApi.Rest.csproj" />
   </ItemGroup>
 
 </Project>
