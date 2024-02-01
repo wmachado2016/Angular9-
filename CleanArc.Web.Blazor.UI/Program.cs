@@ -1,4 +1,4 @@
-using CleanArc.Web.UI.Components;
+using CleanArc.Web.Blazor.UI.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
