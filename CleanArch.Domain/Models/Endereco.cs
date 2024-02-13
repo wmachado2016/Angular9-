@@ -3,7 +3,7 @@ using System;
 
 namespace CleanArch.Domain.Models
 {
-    public sealed class Endereco : Entity
+    public sealed class Endereco : Entidade
     {
         public Endereco(string logradouro, string numero, string complemento, string cep, string bairro, string cidade, string estado)
         {

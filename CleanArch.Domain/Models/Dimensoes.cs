@@ -1,9 +1,11 @@
 ﻿using CleanArch.Domain.Validation;
+using System;
 
 namespace CleanArch.Domain.Models
 {
     public class Dimensoes
     {
+        public Guid Id { get; set; } = new Guid();
         public Dimensoes(decimal altura, decimal largura, decimal profundidade)
         {
             Validacoes.ValidarSeMenorQue(altura, 1, "O campo Altura não pode ser menor ou igual a 0");

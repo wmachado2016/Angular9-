@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanArc.WebApi.Identidade\CleanArc.WebApi.Identidade.csproj" />
-    <ProjectReference Include="..\CleanArch.Application\CleanArch.Application.csproj" />
+    <ProjectReference Include="..\CleanArc.CrossCutting\CleanArc.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

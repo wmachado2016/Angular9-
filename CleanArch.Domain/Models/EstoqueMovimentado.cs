@@ -2,7 +2,7 @@
 
 namespace CleanArch.Domain.Models
 {
-    public class EstoqueMovimentado : Entity
+    public class EstoqueMovimentado : Entidade
     {
         public EstoqueMovimentado(Guid pordutoId, Guid pedidoId, double quantidade, decimal valor, char entrouSaiu)
         {

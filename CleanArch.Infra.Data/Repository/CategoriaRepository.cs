@@ -6,7 +6,7 @@ namespace CleanArch.Infra.Data.Repository
 {
     public class CategoriaRepository : RepositoryBase<Categoria>, ICategoriaRepository
     {
-        public CategoriaRepository(MeuDbContext db) : base(db)
+        public CategoriaRepository(AppDbContext db) : base(db)
         {
         }
     }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace CleanArch.Domain.Models
 {
-    public class Voucher : Entity
+    public class Voucher : Entidade
     {
         public Voucher(string codigo, decimal? percentual, decimal? valorDesconto, int quantidade, TipoDescontoVoucher tipoDescontoVoucher, DateTime? dataUtilizacao, DateTime dataValidade, bool ativo, bool utilizado)
         {

@@ -8,7 +8,7 @@ namespace CleanArch.Infra.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Endereco> builder)
         {
-            builder.HasKey(p => p.Id);
+            builder.HasKey(p => p.Id).HasName("EnderecoId");
 
             builder.Property(c => c.Logradouro)
                 .IsRequired()

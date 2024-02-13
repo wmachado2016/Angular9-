@@ -13,7 +13,7 @@ builder.Configuration
 
 // ConfigureServices
 
-builder.Services.AddDbContext<MeuDbContext>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
@@ -27,7 +27,6 @@ builder.Services.AddSwaggerConfig();
 builder.Services.AddLoggingConfig(builder.Configuration);
 
 builder.Services.ResolveDependencies();
-
 
 
 var app = builder.Build();

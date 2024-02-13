@@ -8,7 +8,7 @@ namespace CleanArch.Infra.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Voucher> builder)
         {
-            builder.HasKey(c => c.Id);
+            builder.HasKey(c => c.Id).HasName("VoucherId");
 
 
             builder.Property(c => c.Codigo)

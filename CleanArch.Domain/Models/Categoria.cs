@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CleanArch.Domain.Models
 {
-    public sealed class Categoria : Entity
+    public sealed class Categoria : Entidade
     {
         public Categoria(string nome, int codigo, bool ativo)
         {

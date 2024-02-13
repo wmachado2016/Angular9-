@@ -2,7 +2,7 @@
 {
     public enum TipoDocumento : int
     {
-        CPF,
+        CPF = 1,
         CNPJ
     }
 }

@@ -6,7 +6,7 @@ namespace CleanArch.Infra.Data.Repository
 {
     public class EstoqueMovimentadoRepository : RepositoryBase<EstoqueMovimentado>, IEstoqueMovimentadoRepository
     {
-        public EstoqueMovimentadoRepository(MeuDbContext db) : base(db)
+        public EstoqueMovimentadoRepository(AppDbContext db) : base(db)
         {
         }
     }

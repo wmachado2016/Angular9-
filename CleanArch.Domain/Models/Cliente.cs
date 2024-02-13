@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CleanArch.Domain.Models
 {
-    public class Cliente : Entity
+    public class Cliente : Entidade
     {
         
         public Cliente(string nome, string sobrenome, DateTime dataNascimento, string email, bool ativo, string documento, TipoPessoa tipoPessoa, TipoDocumento tipoDocumento)

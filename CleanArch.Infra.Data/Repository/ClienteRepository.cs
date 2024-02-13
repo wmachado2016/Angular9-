@@ -8,7 +8,7 @@ namespace CleanArch.Infra.Data.Repository
 {
     public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository
     {
-        public ClienteRepository(MeuDbContext db) : base(db)
+        public ClienteRepository(AppDbContext db) : base(db)
         {
         }
     }

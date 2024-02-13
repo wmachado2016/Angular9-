@@ -9,7 +9,7 @@ namespace CleanArch.Infra.Data.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        protected readonly MeuDbContext _dbContextSqlServer;
+        protected readonly AppDbContext _dbContextSqlServer;
         private IProdutoRepository _produtoRepository;
         private IFornecedorRepository _fornecedorRepository;
         private IEnderecoRepository _enderecoRepository;
@@ -19,7 +19,7 @@ namespace CleanArch.Infra.Data.Repository
         private IFilialRepository _filialRepository;
         private IPedidoRepository _pedidoRepository;
 
-        public UnitOfWork(MeuDbContext dbContextSqlServer)
+        public UnitOfWork(AppDbContext dbContextSqlServer)
         {
             _dbContextSqlServer = dbContextSqlServer;
         }

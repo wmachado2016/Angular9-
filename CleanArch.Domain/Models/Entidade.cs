@@ -1,11 +1,12 @@
 ﻿using FluentValidation.Results;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CleanArch.Domain.Models
 {
-    public abstract class Entity
+    public abstract class Entidade
     {
-        protected Entity()
+        protected Entidade()
         {
             Id = Guid.NewGuid();
         }
@@ -20,6 +21,7 @@ namespace CleanArch.Domain.Models
 
         public string ModificadoPor { get; set; }
 
+        [NotMapped]
         public ValidationResult ValidationResult { get; protected set; }
 
         public virtual bool EhValido()
@@ -29,7 +31,7 @@ namespace CleanArch.Domain.Models
 
         public override bool Equals(object obj)
         {
-            var compareTo = obj as Entity;
+            var compareTo = obj as Entidade;
 
             if (ReferenceEquals(this, compareTo)) return true;
             if (ReferenceEquals(null, compareTo)) return false;
@@ -37,7 +39,7 @@ namespace CleanArch.Domain.Models
             return Id.Equals(compareTo.Id);
         }
 
-        public static bool operator ==(Entity a, Entity b)
+        public static bool operator ==(Entidade a, Entidade b)
         {
             if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
                 return true;
@@ -48,7 +50,7 @@ namespace CleanArch.Domain.Models
             return a.Equals(b);
         }
 
-        public static bool operator !=(Entity a, Entity b)
+        public static bool operator !=(Entidade a, Entidade b)
         {
             return !(a == b);
         }

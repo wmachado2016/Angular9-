@@ -9,7 +9,7 @@ namespace CleanArch.Infra.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Fornecedor> builder)
         {
-            builder.HasKey(p => p.Id);
+            builder.HasKey(p => p.Id).HasName("FornecedorId");
 
             builder.Property(p => p.Nome)
                 .IsRequired()
@@ -30,10 +30,10 @@ namespace CleanArch.Infra.Data.Mappings
                 .WithOne(p => p.Fornecedor)
                 .HasForeignKey(p => p.FornecedorId);
 
-            builder.Property(p => p.TipoDocumento)
+            builder.Property(p => p.TipoDocumento).HasColumnType("int")
                 .HasConversion(new ConversorCustomizadoTipoDocumento());
 
-            builder.Property(p => p.TipoPessoa)
+            builder.Property(p => p.TipoPessoa).HasColumnType("int")
                 .HasConversion(new ConversorCustomizadoTipoPessoa());
 
             builder.ToTable("Fornecedores");

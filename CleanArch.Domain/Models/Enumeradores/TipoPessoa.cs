@@ -2,9 +2,10 @@
 {
     public enum TipoPessoa:int
     {
-        Cliente,
+        Cliente = 1,
         Fornecedor,
         Filial,
+        Usuario,
         Anonima
     }
 }

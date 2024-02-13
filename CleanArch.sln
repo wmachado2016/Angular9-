@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Application", "Cl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Infra.Data", "CleanArch.Infra.Data\CleanArch.Infra.Data.csproj", "{CDE69E81-64AC-476C-A29B-CBF6646913C5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Tests", "CleanArch.Tests\CleanArch.Tests.csproj", "{71545354-4211-4636-BBCC-288DB8D9C6FC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArc.WebApi.Identidade", "CleanArc.WebApi.Identidade\CleanArc.WebApi.Identidade.csproj", "{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArc.WebApi.Autenthication", "CleanArc.WebApi.Identidade\CleanArc.WebApi.Autenthication.csproj", "{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.WebApi.Rest", "CleanArch.WebApi.Rest\CleanArch.WebApi.Rest.csproj", "{EA0A4417-60E5-4807-8C70-DBBDE5F346F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArc.Web.Blazor.UI", "CleanArc.Web.Blazor.UI\CleanArc.Web.Blazor.UI.csproj", "{F50D6B5D-5B2A-4E8E-969D-4B2A63BE1105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArc.Web.Blazor.UI", "CleanArc.Web.Blazor.UI\CleanArc.Web.Blazor.UI.csproj", "{F50D6B5D-5B2A-4E8E-969D-4B2A63BE1105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArc.CrossCutting", "CleanArc.CrossCutting\CleanArc.CrossCutting.csproj", "{7ED7FBDA-2DC9-4FA3-BB88-CA9024FA07E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,6 @@ Global
 		{CDE69E81-64AC-476C-A29B-CBF6646913C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDE69E81-64AC-476C-A29B-CBF6646913C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDE69E81-64AC-476C-A29B-CBF6646913C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{71545354-4211-4636-BBCC-288DB8D9C6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71545354-4211-4636-BBCC-288DB8D9C6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71545354-4211-4636-BBCC-288DB8D9C6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71545354-4211-4636-BBCC-288DB8D9C6FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E4C95A8-6C69-4BC0-B571-12302FC8AD5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{F50D6B5D-5B2A-4E8E-969D-4B2A63BE1105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F50D6B5D-5B2A-4E8E-969D-4B2A63BE1105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F50D6B5D-5B2A-4E8E-969D-4B2A63BE1105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED7FBDA-2DC9-4FA3-BB88-CA9024FA07E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED7FBDA-2DC9-4FA3-BB88-CA9024FA07E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED7FBDA-2DC9-4FA3-BB88-CA9024FA07E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED7FBDA-2DC9-4FA3-BB88-CA9024FA07E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

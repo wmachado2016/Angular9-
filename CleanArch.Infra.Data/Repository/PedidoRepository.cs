@@ -12,8 +12,8 @@ namespace CleanArch.Infra.Data.Repository
 {
     public class PedidoRepository : RepositoryBase<Pedido>, IPedidoRepository
     {
-        private readonly MeuDbContext _context;
-        public PedidoRepository(MeuDbContext context) : base(context) 
+        private readonly AppDbContext _context;
+        public PedidoRepository(AppDbContext context) : base(context) 
         {
             _context = context;
         }

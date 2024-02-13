@@ -4,25 +4,61 @@ using CleanArch.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
 
 namespace CleanArch.Infra.Data.Migrations
 {
-    [DbContext(typeof(MeuDbContext))]
-    [Migration("20211221035439_initial")]
-    partial class initial
+    [DbContext(typeof(AppDbContext))]
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            modelBuilder.HasSequence<int>("MinhaSequencia")
-                .StartsAt(1000L);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CleanArch.Domain.Models.Agenda", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("ClienteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CriadoPor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataAgenda")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataModificado")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModificadoPor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ServicoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("TipoPessoa")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Agendas");
+                });
 
             modelBuilder.Entity("CleanArch.Domain.Models.Categoria", b =>
                 {
@@ -37,7 +73,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -46,15 +82,12 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Nome");
 
                     b.ToTable("Categorias");
                 });
@@ -69,7 +102,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -77,30 +110,53 @@ namespace CleanArch.Infra.Data.Migrations
                     b.Property<DateTime?>("DataModificado")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Documento")
-                        .IsRequired()
-                        .HasColumnType("varchar(14)");
-
-                    b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("TipoDocumento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TipoPessoa")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModificadoPor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sobrenome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoDocumento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoPessoa")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Documento");
-
                     b.ToTable("Clientes");
+                });
+
+            modelBuilder.Entity("CleanArch.Domain.Models.Dimensoes", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Altura")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Largura")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Profundidade")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dimensoes");
                 });
 
             modelBuilder.Entity("CleanArch.Domain.Models.Endereco", b =>
@@ -113,25 +169,22 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Bairro")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cep")
-                        .IsRequired()
-                        .HasColumnType("varchar(8)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cidade")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("ClienteId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Complemento")
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -140,8 +193,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("FilialId")
                         .HasColumnType("uniqueidentifier");
@@ -150,15 +202,13 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Logradouro")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Numero")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -184,7 +234,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -193,10 +243,10 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TipoPessoa")
                         .HasColumnType("int");
@@ -216,7 +266,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -225,27 +275,21 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Documento")
-                        .IsRequired()
-                        .HasColumnType("varchar(14)");
-
-                    b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("TipoDocumento")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TipoPessoa")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                    b.Property<string>("ModificadoPor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoDocumento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoPessoa")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Documento");
 
                     b.ToTable("Fornecedores");
                 });
@@ -260,12 +304,10 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Codigo")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValueSql("NEXT VALUE FOR MinhaSequencia");
+                        .HasColumnType("int");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -274,19 +316,16 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("Desconto")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PedidoStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                    b.Property<int>("PedidoStatus")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("ValorTotal")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid?>("VoucherId")
                         .HasColumnType("uniqueidentifier");
@@ -297,8 +336,6 @@ namespace CleanArch.Infra.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("Codigo");
 
                     b.HasIndex("VoucherId");
 
@@ -315,7 +352,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -324,7 +361,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("PedidoId")
                         .HasColumnType("uniqueidentifier");
@@ -333,15 +370,16 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ProdutoNome")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
+                    b.Property<int>("TipoPedido")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("ValorUnitario")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -363,7 +401,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -372,8 +410,10 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("DimensoesId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("Estoque")
                         .HasColumnType("float");
@@ -388,34 +428,86 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Imagem")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Unidade")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Valor")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
 
+                    b.HasIndex("DimensoesId");
+
                     b.HasIndex("FilialId");
 
                     b.HasIndex("FornecedorId");
 
-                    b.HasIndex("Nome");
-
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("CleanArch.Domain.Models.Servico", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CriadoPor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataModificado")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Duracao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("FilialId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("Imagen")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("ListaHorarioAgendado")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ListaHorarioAtendimento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ListaHorarioDisponivel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModificadoPor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FilialId");
+
+                    b.ToTable("Servicos");
                 });
 
             modelBuilder.Entity("CleanArch.Domain.Models.Voucher", b =>
@@ -428,11 +520,10 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Codigo")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CriadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -447,11 +538,10 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModificadoPor")
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Percentual")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
@@ -463,8 +553,7 @@ namespace CleanArch.Infra.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<decimal?>("ValorDesconto")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -476,16 +565,19 @@ namespace CleanArch.Infra.Data.Migrations
                     b.HasOne("CleanArch.Domain.Models.Cliente", "Cliente")
                         .WithOne("Endereco")
                         .HasForeignKey("CleanArch.Domain.Models.Endereco", "ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CleanArch.Domain.Models.Filial", "Filial")
                         .WithOne("Endereco")
                         .HasForeignKey("CleanArch.Domain.Models.Endereco", "FilialId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CleanArch.Domain.Models.Fornecedor", "Fornecedor")
                         .WithOne("Endereco")
                         .HasForeignKey("CleanArch.Domain.Models.Endereco", "FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cliente");
@@ -500,6 +592,7 @@ namespace CleanArch.Infra.Data.Migrations
                     b.HasOne("CleanArch.Domain.Models.Cliente", "Cliente")
                         .WithMany("Pedidos")
                         .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CleanArch.Domain.Models.Voucher", "Voucher")
@@ -516,6 +609,7 @@ namespace CleanArch.Infra.Data.Migrations
                     b.HasOne("CleanArch.Domain.Models.Pedido", "Pedido")
                         .WithMany("PedidoItems")
                         .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Pedido");
@@ -526,48 +620,37 @@ namespace CleanArch.Infra.Data.Migrations
                     b.HasOne("CleanArch.Domain.Models.Categoria", "Categoria")
                         .WithMany("Produtos")
                         .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("CleanArch.Domain.Models.Dimensoes", "Dimensoes")
+                        .WithMany()
+                        .HasForeignKey("DimensoesId");
 
                     b.HasOne("CleanArch.Domain.Models.Filial", null)
                         .WithMany("Produtos")
                         .HasForeignKey("FilialId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CleanArch.Domain.Models.Fornecedor", "Fornecedor")
                         .WithMany("Produtos")
                         .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.OwnsOne("CleanArch.Domain.Models.Dimensoes", "Dimensoes", b1 =>
-                        {
-                            b1.Property<Guid>("ProdutoId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int>("Altura")
-                                .HasColumnType("int")
-                                .HasColumnName("Altura");
-
-                            b1.Property<int>("Largura")
-                                .HasColumnType("int")
-                                .HasColumnName("Largura");
-
-                            b1.Property<int>("Profundidade")
-                                .HasColumnType("int")
-                                .HasColumnName("Profundidade");
-
-                            b1.HasKey("ProdutoId");
-
-                            b1.ToTable("Produtos");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ProdutoId");
-                        });
 
                     b.Navigation("Categoria");
 
                     b.Navigation("Dimensoes");
 
                     b.Navigation("Fornecedor");
+                });
+
+            modelBuilder.Entity("CleanArch.Domain.Models.Servico", b =>
+                {
+                    b.HasOne("CleanArch.Domain.Models.Filial", null)
+                        .WithMany("Servicos")
+                        .HasForeignKey("FilialId");
                 });
 
             modelBuilder.Entity("CleanArch.Domain.Models.Categoria", b =>
@@ -587,6 +670,8 @@ namespace CleanArch.Infra.Data.Migrations
                     b.Navigation("Endereco");
 
                     b.Navigation("Produtos");
+
+                    b.Navigation("Servicos");
                 });
 
             modelBuilder.Entity("CleanArch.Domain.Models.Fornecedor", b =>

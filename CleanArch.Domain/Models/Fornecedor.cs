@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CleanArch.Domain.Models
 {
-    public sealed class Fornecedor : Entity
+    public sealed class Fornecedor : Entidade
     {
         public Fornecedor(string nome, string documento, TipoPessoa tipoFornecedor, Endereco endereco, bool ativo, TipoDocumento tipoDocumento)
         {

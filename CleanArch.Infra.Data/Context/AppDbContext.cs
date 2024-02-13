@@ -1,7 +1,5 @@
 ﻿using CleanArch.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.Extensions.Options;
 using System;
 using System.IO;
 using System.Linq;
@@ -9,25 +7,26 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Infra.Data.Context
 {
-    public class MeuDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         private readonly StreamWriter _writer = new StreamWriter("log_ef_core.txt", append: true);
 
-        public MeuDbContext(DbContextOptions<MeuDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
-        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Filial> Filial { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<PedidoItem> PedidoItems { get; set; }
         public DbSet<Voucher> Vouchers { get; set; }
+        public DbSet<Servico> Servicos { get; set; }
+        public DbSet<Agenda> Agendas { get; set; }
 
-       
         public async Task<int> Commit()
         {
             foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataCadastro") != null))

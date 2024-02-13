@@ -3,7 +3,7 @@ using System;
 
 namespace CleanArch.Domain.Models
 {
-    public sealed class Produto : Entity
+    public sealed class Produto : Entidade
     {
         public Produto(string nome, string descricao, string imagem, decimal valor, bool ativo, Dimensoes dimensoes, Guid filialId)
         {

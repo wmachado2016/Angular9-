@@ -9,7 +9,7 @@ namespace CleanArch.Infra.Data.Repository
 {
     public class FornecedorRepository : RepositoryBase<Fornecedor>, IFornecedorRepository
     {
-        public FornecedorRepository(MeuDbContext context) : base(context)
+        public FornecedorRepository(AppDbContext context) : base(context)
         {
         }
 

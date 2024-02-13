@@ -11,7 +11,7 @@ namespace CleanArch.Infra.Data.Repository
 {
     public class ProdutoRepository : RepositoryBase<Produto>, IProdutoRepository
     {
-        public ProdutoRepository(MeuDbContext context) : base(context) { }
+        public ProdutoRepository(AppDbContext context) : base(context) { }
 
         public async Task<Produto> ObterProdutoFornecedor(Guid id)
         {

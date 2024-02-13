@@ -25,10 +25,10 @@ namespace CleanArch.Infra.Data.Mappings
 
             builder.HasIndex(b => b.Documento);
 
-            builder.Property(p => p.TipoDocumento)
+            builder.Property(p => p.TipoDocumento).HasColumnType("int")
                 .HasConversion(new ConversorCustomizadoTipoDocumento());
 
-            builder.Property(p => p.TipoPessoa)
+            builder.Property(p => p.TipoPessoa).HasColumnType("int")
                 .HasConversion(new ConversorCustomizadoTipoPessoa());
 
             builder.ToTable("Clientes");

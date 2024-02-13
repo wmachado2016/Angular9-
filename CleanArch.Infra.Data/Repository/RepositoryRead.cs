@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Infra.Data.Repository
 {
-    public abstract class RepositoryRead<TEntity> : IRepositoryRead<TEntity> where TEntity : Entity
+    public abstract class RepositoryRead<TEntity> : IRepositoryRead<TEntity> where TEntity : Entidade
     {
-        protected readonly MeuDbContext _dbContextSqlServer;
+        protected readonly AppDbContext _dbContextSqlServer;
 
-        protected RepositoryRead(MeuDbContext db)
+        protected RepositoryRead(AppDbContext db)
         {
             _dbContextSqlServer = db;
         }

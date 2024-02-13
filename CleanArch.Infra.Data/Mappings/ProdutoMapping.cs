@@ -8,7 +8,7 @@ namespace CleanArch.Infra.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            builder.HasKey(c => c.Id);
+            builder.HasKey(c => c.Id).HasName("ProdutoId");
 
             builder.Property(c => c.Nome)
                 .IsRequired()

@@ -5,15 +5,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Dapper" Version="2.1.4" />
-		<PackageReference Include="microsoft.entityframeworkcore" Version="7.0.12" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+		<PackageReference Include="Dapper" Version="2.1.28" />
+		<PackageReference Include="microsoft.entityframeworkcore" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
 			<PrivateAssets>none</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="microsoft.entityframeworkcore.relational" Version="7.0.12" />
-		<PackageReference Include="microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+		<PackageReference Include="microsoft.entityframeworkcore.relational" Version="8.0.1" />
+		<PackageReference Include="microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -22,6 +22,10 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\CleanArch.Domain\CleanArch.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
 	</ItemGroup>
 
 </Project>

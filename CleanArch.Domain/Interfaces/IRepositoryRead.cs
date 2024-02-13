@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Domain.Intefaces
 {
-    public interface IRepositoryRead<TEntity> : IDisposable where TEntity : Entity
+    public interface IRepositoryRead<TEntity> : IDisposable where TEntity : Entidade
     {
         Task<TEntity> ObterPorId(Guid id);
         Task<IEnumerable<TEntity>> ObterTodos();

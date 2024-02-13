@@ -6,7 +6,7 @@ namespace CleanArch.Infra.Data.Repository
 {
     public class FilialRepository : RepositoryBase<Filial>, IFilialRepository
     {
-        public FilialRepository(MeuDbContext db) : base(db)
+        public FilialRepository(AppDbContext db) : base(db)
         {
         }
     }

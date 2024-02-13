@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace CleanArch.Domain.Models
 {
-    public class Pedido : Entity, IAggregateRoot
+    public class Pedido : Entidade, IAggregateRoot
     {
         public int Codigo { get; private set; }
         public bool VoucherUtilizado { get; private set; }

@@ -10,7 +10,7 @@ namespace CleanArch.Infra.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
-            builder.HasKey(c => c.Id);
+            builder.HasKey(c => c.Id).HasName("PedidoId");
 
             builder.Property(c => c.Codigo)
                 .HasDefaultValueSql("NEXT VALUE FOR MinhaSequencia");
@@ -28,7 +28,7 @@ namespace CleanArch.Infra.Data.Mappings
                 .WithOne(c => c.Pedido)
                 .HasForeignKey(c => c.PedidoId);
 
-            builder.Property(p => p.PedidoStatus)
+            builder.Property(p => p.PedidoStatus).HasColumnType("int")
                 .HasConversion(new ConversorCustomizadoPedidoStatus());
 
             builder.HasQueryFilter(p => p.PedidoStatus != PedidoStatus.Cancelado);
