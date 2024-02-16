@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace CleanArc.WebApi.Identidade.Extensions
+namespace CleanArc.WebApi.Autenthication.Extensions
 {
     public class IdentityMensagensPortugues : IdentityErrorDescriber
     {

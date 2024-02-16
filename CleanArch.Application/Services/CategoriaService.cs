@@ -16,26 +16,26 @@ namespace CleanArch.Application.Services
             _uof = uof;
         }
 
-        public async Task Adicionar(Categoria categoria)
+        public void Adicionar(Categoria categoria)
         {
             if (!ExecutarValidacao(new CategoriaValidacao(), categoria)) return;
 
-            await _uof.CategoriaRepository.Adicionar(categoria);
-            await _uof.Commit();
+             _uof.CategoriaRepository.Adicionar(categoria);
+             _uof.Commit();
         }
 
-        public async Task Atualizar(Categoria categoria)
+        public void Atualizar(Categoria categoria)
         {
             if (!ExecutarValidacao(new CategoriaValidacao(), categoria)) return;
 
-            await _uof.CategoriaRepository.Atualizar(categoria);
-            await _uof.Commit();
+             _uof.CategoriaRepository.Atualizar(categoria);
+             _uof.Commit();
         }
 
-        public async Task Remover(Guid id)
+        public void Remover(Guid id)
         {
-            await _uof.CategoriaRepository.Remover(id);
-            await _uof.Commit();
+             _uof.CategoriaRepository.Remover(id);
+             _uof.Commit();
         }
 
         public void Dispose()

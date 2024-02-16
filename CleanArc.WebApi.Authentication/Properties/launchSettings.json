@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "CleanArc.WebApi.Identidade": {
+    "CleanArc.WebApi.Autenthication": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

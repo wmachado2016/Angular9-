@@ -6,8 +6,8 @@ namespace CleanArch.Application.Intefaces
 {
     public interface IProdutoService : IDisposable
     {
-        Task<int> Adicionar(Produto produto);
-        Task<int> Atualizar(Produto produto);
-        Task<int> Remover(Guid id);
+        int Adicionar(Produto produto);
+        int Atualizar(Produto produto);
+        int Remover(Guid id);
     }
 }

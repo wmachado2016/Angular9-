@@ -6,10 +6,10 @@ namespace CleanArch.Application.Intefaces
 {
     public interface IFornecedorService : IDisposable
     {
-        Task<int> Adicionar(Fornecedor fornecedor);
-        Task<int> Atualizar(Fornecedor fornecedor);
-        Task<int> Remover(Guid id);
+        int Adicionar(Fornecedor fornecedor);
+        int Atualizar(Fornecedor fornecedor);
+        int Remover(Guid id);
 
-        Task<int> AtualizarEndereco(Endereco endereco);
+        int AtualizarEndereco(Endereco endereco);
     }
 }

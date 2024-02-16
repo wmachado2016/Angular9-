@@ -16,26 +16,26 @@ namespace CleanArch.Application.Services
             _uof = uof;
         }
 
-        public async Task<int> Adicionar(Produto produto)
+        public int Adicionar(Produto produto)
         {
             if (!ExecutarValidacao(new ProdutoValidacao(), produto)) return 0;
 
-            await _uof.ProdutoRepository.Adicionar(produto);
-            return await _uof.Commit();
+             _uof.ProdutoRepository.Adicionar(produto);
+            return  _uof.Commit().Result;
         }
 
-        public async Task<int> Atualizar(Produto produto)
+        public int Atualizar(Produto produto)
         {
             if (!ExecutarValidacao(new ProdutoValidacao(), produto)) return 0;
 
-            await _uof.ProdutoRepository.Atualizar(produto);
-            return await _uof.Commit();
+             _uof.ProdutoRepository.Atualizar(produto);
+            return  _uof.Commit().Result;
         }
 
-        public async Task<int> Remover(Guid id)
+        public int Remover(Guid id)
         {
-            await _uof.ProdutoRepository.Remover(id);
-            return await _uof.Commit();
+             _uof.ProdutoRepository.Remover(id);
+            return  _uof.Commit().Result;
         }
 
         public void Dispose()

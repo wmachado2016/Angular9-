@@ -17,7 +17,7 @@ namespace CleanArch.Application.Services
             _uof = uof;
         }
 
-        public async Task<int> Adicionar(Fornecedor fornecedor)
+        public int Adicionar(Fornecedor fornecedor)
         {
             if (!ExecutarValidacao(new FornecedorValidacao(), fornecedor) 
                 || !ExecutarValidacao(new EnderecoValidacao(), fornecedor.Endereco)) return 0;
@@ -28,11 +28,11 @@ namespace CleanArch.Application.Services
                 return 0;
             }
 
-            await _uof.FornecedorRepository.Adicionar(fornecedor);
-            return await _uof.Commit();
+             _uof.FornecedorRepository.Adicionar(fornecedor);
+            return  _uof.Commit().Result;
         }
 
-        public async Task<int> Atualizar(Fornecedor fornecedor)
+        public int Atualizar(Fornecedor fornecedor)
         {
             if (!ExecutarValidacao(new FornecedorValidacao(), fornecedor)) return 0;
 
@@ -42,19 +42,19 @@ namespace CleanArch.Application.Services
                 return 00 ;
             }
 
-            await _uof.FornecedorRepository.Atualizar(fornecedor);
-            return await _uof.Commit();
+             _uof.FornecedorRepository.Atualizar(fornecedor);
+            return  _uof.Commit().Result;
         }
 
-        public async Task<int> AtualizarEndereco(Endereco endereco)
+        public int AtualizarEndereco(Endereco endereco)
         {
             if (!ExecutarValidacao(new EnderecoValidacao(), endereco)) return 0;
 
-            await _uof.EnderecoRepository.Atualizar(endereco);
-            return await _uof.Commit();
+             _uof.EnderecoRepository.Atualizar(endereco);
+            return  _uof.Commit().Result;
         }
 
-        public async Task<int> Remover(Guid id)
+        public int Remover(Guid id)
         {
             if (_uof.FornecedorRepository.ObterFornecedorProdutosEndereco(id).Result.Produtos.Any())
             {
@@ -62,15 +62,15 @@ namespace CleanArch.Application.Services
                 return 0;
             }
 
-            var endereco = await _uof.EnderecoRepository.ObterEnderecoPorFornecedor(id);
+            var endereco =  _uof.EnderecoRepository.ObterEnderecoCliente(id).Result;
 
             if (endereco != null)
             {
-                await _uof.EnderecoRepository.Remover(endereco.Id);
+                 _uof.EnderecoRepository.Remover(endereco.Id);
             }
 
-            await _uof.FornecedorRepository.Remover(id);
-            return await _uof.Commit();
+             _uof.FornecedorRepository.Remover(id);
+            return  _uof.Commit().Result;
         }
 
         public void Dispose()

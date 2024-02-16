@@ -7,8 +7,8 @@ namespace CleanArch.Domain.Intefaces
 {
     public interface IRepositoryWrite<TEntity> : IDisposable where TEntity : Entidade
     {
-        Task Adicionar(TEntity entity);
-        Task Atualizar(TEntity entity);
-        Task Remover(Guid id);
+        void Adicionar(TEntity entity);
+        void Atualizar(TEntity entity);
+        void Remover(Guid id);
     }
 }

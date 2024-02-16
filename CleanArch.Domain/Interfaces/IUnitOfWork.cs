@@ -13,6 +13,8 @@ namespace CleanArch.Domain.Intefaces
         IEstoqueMovimentadoRepository EstoqueMovimentadoRepository { get; }
         IFilialRepository FilialRepository { get; }
         IPedidoRepository PedidoRepository { get; }
+        IAgendaRepository AgendaRepository { get; }
+        IServicoAgendaRepository ServicoAgendaRepository { get; }
         Task<int> Commit();
     }
 }

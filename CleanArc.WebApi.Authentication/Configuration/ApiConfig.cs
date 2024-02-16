@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using CleanArc.WebApi.Autenthication.Configuration;
 
-namespace CleanArc.WebApi.Identidade.Configuration
+namespace CleanArc.WebApi.Autenthication.Configuration
 {
     public static class ApiConfig
     {

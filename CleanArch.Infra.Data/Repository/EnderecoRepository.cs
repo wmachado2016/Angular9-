@@ -12,7 +12,7 @@ namespace DevIO.Data.Repository
     {
         public EnderecoRepository(AppDbContext context) : base(context) { }
 
-        public async Task<Endereco> ObterEnderecoPorFornecedor(Guid fornecedorId)
+        public async Task<Endereco> ObterEnderecoCliente(Guid fornecedorId)
         {
             return await _dbContextSqlServer.Enderecos.AsNoTracking()
                 .FirstOrDefaultAsync(f => f.FornecedorId == fornecedorId);

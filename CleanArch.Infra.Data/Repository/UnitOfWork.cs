@@ -18,7 +18,8 @@ namespace CleanArch.Infra.Data.Repository
         private IEstoqueMovimentadoRepository _estoqueMovimentadoRepository;
         private IFilialRepository _filialRepository;
         private IPedidoRepository _pedidoRepository;
-
+        private IAgendaRepository _agendaRepository;
+        private IServicoAgendaRepository _servicoAgendaRepository;
         public UnitOfWork(AppDbContext dbContextSqlServer)
         {
             _dbContextSqlServer = dbContextSqlServer;
@@ -32,13 +33,17 @@ namespace CleanArch.Infra.Data.Repository
 
         public IEnderecoRepository EnderecoRepository => _enderecoRepository ?? new EnderecoRepository(_dbContextSqlServer);
 
-        public IClienteRepository ClienteRepository => throw new NotImplementedException();
+        public IClienteRepository ClienteRepository => _clienteRepository ?? new ClienteRepository(_dbContextSqlServer);
 
-        public IEstoqueMovimentadoRepository EstoqueMovimentadoRepository => throw new NotImplementedException();
+        public IEstoqueMovimentadoRepository EstoqueMovimentadoRepository => _estoqueMovimentadoRepository ?? new EstoqueMovimentadoRepository(_dbContextSqlServer);
 
-        public IFilialRepository FilialRepository => throw new NotImplementedException();
+        public IFilialRepository FilialRepository => _filialRepository ?? new FilialRepository(_dbContextSqlServer);
 
-        public IPedidoRepository PedidoRepository => throw new NotImplementedException();
+        public IPedidoRepository PedidoRepository => _pedidoRepository ?? new PedidoRepository(_dbContextSqlServer);
+
+        public IAgendaRepository AgendaRepository => _agendaRepository ?? new AgendaRepository(_dbContextSqlServer);
+
+        public IServicoAgendaRepository ServicoAgendaRepository => _servicoAgendaRepository ?? new ServicoAgendaRepository(_dbContextSqlServer);
 
         public async Task<int> Commit()
         {

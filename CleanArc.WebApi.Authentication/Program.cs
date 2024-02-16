@@ -1,5 +1,5 @@
-using CleanArc.WebApi.Identidade.Configuration;
-using CleanArc.WebApi.Identidade.Data;
+using CleanArc.WebApi.Autenthication.Configuration;
+using CleanArc.WebApi.Autenthication.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +16,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 
 builder.Services.AddEndpointsApiExplorer();
 

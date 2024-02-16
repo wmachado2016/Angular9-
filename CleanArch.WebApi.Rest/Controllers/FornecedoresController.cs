@@ -52,7 +52,7 @@ namespace CleanArch.WebApi.Rest.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            await _fornecedorService.Adicionar(_mapper.Map<Fornecedor>(fornecedorViewModel));
+             _fornecedorService.Adicionar(_mapper.Map<Fornecedor>(fornecedorViewModel));
 
             return CustomResponse(fornecedorViewModel);
         }
@@ -69,7 +69,7 @@ namespace CleanArch.WebApi.Rest.Controllers
 
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            await _fornecedorService.Atualizar(_mapper.Map<Fornecedor>(fornecedorViewModel));
+             _fornecedorService.Atualizar(_mapper.Map<Fornecedor>(fornecedorViewModel));
 
             return CustomResponse(fornecedorViewModel);
         }
@@ -82,7 +82,7 @@ namespace CleanArch.WebApi.Rest.Controllers
 
             if (fornecedorViewModel == null) return NotFound();
 
-            await _fornecedorService.Remover(id);
+             _fornecedorService.Remover(id);
 
             return CustomResponse(fornecedorViewModel);
         }
@@ -105,7 +105,7 @@ namespace CleanArch.WebApi.Rest.Controllers
 
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            await _fornecedorService.AtualizarEndereco(_mapper.Map<Endereco>(enderecoViewModel));
+             _fornecedorService.AtualizarEndereco(_mapper.Map<Endereco>(enderecoViewModel));
 
             return CustomResponse(enderecoViewModel);
         }

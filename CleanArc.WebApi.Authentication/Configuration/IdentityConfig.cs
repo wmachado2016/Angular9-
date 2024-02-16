@@ -1,12 +1,12 @@
-﻿using CleanArc.WebApi.Identidade.Data;
-using CleanArc.WebApi.Identidade.Extensions;
+﻿using CleanArc.WebApi.Autenthication.Data;
+using CleanArc.WebApi.Autenthication.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace CleanArc.WebApi.Identidade.Configuration
+namespace CleanArc.WebApi.Autenthication.Configuration
 {
     public static class IdentityConfig
     {
