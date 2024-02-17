@@ -1,5 +1,5 @@
-﻿using CleanArc.WebApi.Identidade.Extensions;
-using CleanArc.WebApi.Identidade.Models;
+﻿using CleanArc.WebApi.Identity.Extensions;
+using CleanArc.WebApi.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace CleanArc.WebApi.Identidade.Controllers
+namespace CleanArc.WebApi.Identity.Controllers
 {
     [Route("api/identidade")]
     public class AuthController : MainController
@@ -17,7 +17,7 @@ namespace CleanArc.WebApi.Identidade.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
 
-        public AuthController(SignInManager<IdentityUser> signInManager, 
+        public AuthController(SignInManager<IdentityUser> signInManager,
                               UserManager<IdentityUser> userManager,
                               IOptions<AppSettings> appSettings)
         {
@@ -58,8 +58,7 @@ namespace CleanArc.WebApi.Identidade.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var result = await _signInManager.PasswordSignInAsync(usuarioLogin.Email, usuarioLogin.Senha,
-                false, true);
+            var result = await _signInManager.PasswordSignInAsync(usuarioLogin.Email, usuarioLogin.Senha, false, true);
 
             if (result.Succeeded)
             {
@@ -133,6 +132,8 @@ namespace CleanArc.WebApi.Identidade.Controllers
                 {
                     Id = user.Id,
                     Email = user.Email,
+                    TipoUsuario = 1,
+                    Imagem = null,
                     Claims = claims.Select(c => new UsuarioClaim { Type = c.Type, Value = c.Value })
                 }
             };

@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace CleanArc.WebApi.Identidade.Configuration
+namespace CleanArc.WebApi.Identity.Configuration
 {
     public static class SwaggerConfig
     {
@@ -23,11 +23,10 @@ namespace CleanArc.WebApi.Identidade.Configuration
 
         public static IApplicationBuilder UseSwaggerConfiguration(this IApplicationBuilder app)
         {
+
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-            });
+            app.UseSwaggerUI();
+
 
             return app;
         }

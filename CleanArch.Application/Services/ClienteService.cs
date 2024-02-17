@@ -17,20 +17,20 @@ namespace CleanArch.Application.Services
             _uof = uof;
         }
 
-        public async Task Adicionar(Cliente cliente)
+        public void Adicionar(Cliente cliente)
         {
             if (!ExecutarValidacao(new ClienteValidacao(), cliente)) return;
 
-            await _uof.ClienteRepository.Adicionar(cliente);
-            await _uof.Commit();
+             _uof.ClienteRepository.Adicionar(cliente);
+             _uof.Commit();
         }
 
-        public async Task Atualizar(Cliente cliente)
+        public void Atualizar(Cliente cliente)
         {
             if (!ExecutarValidacao(new ClienteValidacao(), cliente)) return;
 
-            await _uof.ClienteRepository.Atualizar(cliente);
-            await _uof.Commit();
+             _uof.ClienteRepository.Atualizar(cliente);
+             _uof.Commit();
         }
 
         public void Inativar(Cliente cliente)
@@ -43,10 +43,10 @@ namespace CleanArch.Application.Services
             _uof.Commit();
         }
 
-        public async Task Remover(Guid id)
+        public void Remover(Guid id)
         {
-            await _uof.ClienteRepository.Remover(id);
-            await _uof.Commit();
+             _uof.ClienteRepository.Remover(id);
+             _uof.Commit();
         }
 
         public void Dispose()

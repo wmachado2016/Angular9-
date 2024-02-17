@@ -11,9 +11,7 @@ namespace CleanArch.Infra.Data.Context
     {
         private readonly StreamWriter _writer = new StreamWriter("log_ef_core.txt", append: true);
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }

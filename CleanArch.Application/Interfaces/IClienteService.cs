@@ -7,9 +7,9 @@ namespace CleanArch.Application.Intefaces
 {
     public interface IClienteService : IDisposable
     {
-        Task Adicionar(Cliente produto);
-        Task Atualizar(Cliente produto);
+        void Adicionar(Cliente produto);
+        void Atualizar(Cliente produto);
         Task<IEnumerable<Cliente>> ObterTodosAtivos();
-        Task Remover(Guid id);
+        void Remover(Guid id);
     }
 }

@@ -6,6 +6,6 @@ namespace CleanArch.Domain.Intefaces
 {
     public interface IEnderecoRepository : IRepositoryBase<Endereco>
     {
-        Task<Endereco> ObterEnderecoPorFornecedor(Guid fornecedorId);
+        Task<Endereco> ObterEnderecoCliente(Guid clienteId);
     }
 }

@@ -1,25 +1,25 @@
-﻿using CleanArc.WebApi.Identidade.Data;
-using CleanArc.WebApi.Identidade.Extensions;
+﻿using CleanArc.WebApi.Identity.Data;
+using CleanArc.WebApi.Identity.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace CleanArc.WebApi.Identidade.Configuration
+namespace CleanArc.WebApi.Autenthication.Configuration
 {
     public static class IdentityConfig
     {
         public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<AppDbContextIdentity>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddErrorDescriber<IdentityMensagensPortugues>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<AppDbContextIdentity>()
                 .AddDefaultTokenProviders();
 
 

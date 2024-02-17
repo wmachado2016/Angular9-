@@ -6,8 +6,8 @@ namespace CleanArch.Application.Intefaces
 {
     public interface ICategoriaService : IDisposable
     {
-        Task Adicionar(Categoria cat);
-        Task Atualizar(Categoria cat);
-        Task Remover(Guid id);
+        void Adicionar(Categoria cat);
+        void Atualizar(Categoria cat);
+        void Remover(Guid id);
     }
 }

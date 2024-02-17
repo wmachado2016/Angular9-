@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using CleanArc.WebApi.Autenthication.Configuration;
 
-namespace CleanArc.WebApi.Identidade.Configuration
+namespace CleanArc.WebApi.Identity.Configuration
 {
     public static class ApiConfig
     {
@@ -14,12 +11,9 @@ namespace CleanArc.WebApi.Identidade.Configuration
             return services;
         }
 
-        public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static IApplicationBuilder UseApiConfiguration(this IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
 

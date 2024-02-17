@@ -32,6 +32,7 @@ namespace CleanArch.WebApi.Rest.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IEnumerable<ProdutoViewModel>> ObterTodos()
         {
@@ -61,7 +62,7 @@ namespace CleanArch.WebApi.Rest.Controllers
             }
 
             produtoViewModel.Imagem = imagemNome;
-            await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
+             _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
             return CustomResponse(produtoViewModel);
         }
@@ -100,7 +101,7 @@ namespace CleanArch.WebApi.Rest.Controllers
             produtoAtualizacao.Valor = produtoViewModel.Valor;
             produtoAtualizacao.Ativo = produtoViewModel.Ativo;
 
-            await _produtoService.Atualizar(_mapper.Map<Produto>(produtoAtualizacao));
+             _produtoService.Atualizar(_mapper.Map<Produto>(produtoAtualizacao));
 
             return CustomResponse(produtoViewModel);
         }
@@ -113,7 +114,7 @@ namespace CleanArch.WebApi.Rest.Controllers
 
             if (produto == null) return NotFound();
 
-            await _produtoService.Remover(id);
+             _produtoService.Remover(id);
 
             return CustomResponse(produto);
         }
@@ -164,7 +165,7 @@ namespace CleanArch.WebApi.Rest.Controllers
             }
 
             produtoViewModel.Imagem = imgPrefixo + produtoViewModel.ImagemUpload.FileName;
-            await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
+             _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
             return CustomResponse(produtoViewModel);
         }

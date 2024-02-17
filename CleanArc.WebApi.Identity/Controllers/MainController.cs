@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace CleanArc.WebApi.Identidade.Controllers
+namespace CleanArc.WebApi.Identity.Controllers
 {
     [ApiController]
-    public abstract class MainController : Controller
+    public class MainController : ControllerBase
     {
         protected ICollection<string> Erros = new List<string>();
 

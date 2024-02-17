@@ -15,17 +15,17 @@ namespace CleanArch.Infra.Data.Repository
             _dbContextSqlServer = db;
         }
         
-        public virtual async Task Adicionar(TEntity entity)
+        public virtual void Adicionar(TEntity entity)
         {
             _dbContextSqlServer.Set<TEntity>().Add(entity);
         }
 
-        public virtual async Task Atualizar(TEntity entity)
+        public virtual void Atualizar(TEntity entity)
         {
             _dbContextSqlServer.Set<TEntity>().Update(entity);
         }
 
-        public virtual async Task Remover(Guid id)
+        public virtual void Remover(Guid id)
         {
             _dbContextSqlServer.Set<TEntity>().Remove(new TEntity { Id = id });
         }

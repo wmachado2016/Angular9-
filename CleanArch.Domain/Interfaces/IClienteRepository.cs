@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Domain.Intefaces
 {
-    public interface IClienteRepository: IRepositoryBase<Cliente>
+    public interface IClienteRepository : IRepositoryBase<Cliente>
     {
     }
 }

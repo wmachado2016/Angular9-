@@ -1,4 +1,4 @@
-﻿namespace CleanArc.WebApi.Identidade.Extensions
+﻿namespace CleanArc.WebApi.Identity.Extensions
 {
     public class AppSettings
     {
