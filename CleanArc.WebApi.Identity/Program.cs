@@ -1,5 +1,6 @@
 using CleanArc.WebApi.Autenthication.Configuration;
-using CleanArc.WebApi.Autenthication.Data;
+using CleanArc.WebApi.Identity.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,10 +13,10 @@ builder.Configuration
 
 // ConfigureServices
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//{
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+//});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -31,11 +32,11 @@ builder.Services.AddSwaggerConfiguration();
 // Configure
 var app = builder.Build();
 
+app.UseApiConfiguration();
+
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwaggerConfiguration();
+    app.UseSwaggerConfiguration(); 
 }
-
-app.UseApiConfiguration(builder.Environment);
 
 app.Run();
