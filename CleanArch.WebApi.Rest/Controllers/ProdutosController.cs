@@ -39,6 +39,7 @@ namespace CleanArch.WebApi.Rest.Controllers
             return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _unitOfWork.ProdutoRepository.ObterProdutosFornecedores());
         }
 
+        [AllowAnonymous]
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<ProdutoViewModel>> ObterPorId(Guid id)
         {

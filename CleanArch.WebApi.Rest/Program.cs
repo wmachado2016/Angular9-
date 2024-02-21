@@ -20,7 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddApiConfig();
+builder.Services.AddApiConfig(builder.Configuration);
 
 builder.Services.AddSwaggerConfig();
 
